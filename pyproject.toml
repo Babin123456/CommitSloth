@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "commitsloth"
+version = "0.1.0"
+description = "Local, offline-first developer productivity tool generating PR summaries and changelogs using local Gemma models on Ollama."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "CommitSloth Team" }
+]
+keywords = [
+    "git",
+    "developer-tools",
+    "pull-request",
+    "changelog",
+    "conventional-commits",
+    "ollama",
+    "gemma",
+    "local-ai",
+    "hacktoberfest",
+    "offline-first"
+]
+dependencies = [
+    "requests>=2.31.0",
+    "rich>=13.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.12.0",
+]
+
+[project.scripts]
+commitsloth = "commitsloth.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
