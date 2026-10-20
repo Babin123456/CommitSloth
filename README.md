@@ -7,7 +7,7 @@
 [![Python: 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![AI: Google Gemma](https://img.shields.io/badge/AI-Google%20Gemma-4285F4.svg)](https://ai.google.dev/gemma)
 [![Engine: Ollama](https://img.shields.io/badge/Engine-Ollama%20Local-black.svg)](https://ollama.com)
-[![Privacy: Zero Cloud Leakage](https://img.shields.io/badge/Privacy-100%25%20Offline-success.svg)](#-zero-cloud-leakage-guarantee)
+[![Privacy: Zero Cloud Leakage](https://img.shields.io/badge/Privacy-100%25%20Offline-success.svg)](#️-zero-cloud-leakage-guarantee)
 
 ---
 
@@ -76,11 +76,13 @@ flowchart TD
 ## 🚀 Quickstart
 
 ### 1. Prerequisites
+
 - **Python 3.10+**
 - **Git** installed and available in your `PATH`
 - **[Ollama](https://ollama.com)** installed and running on `localhost:11434`
 
 ### 2. Download Google Gemma via Ollama
+
 Open your terminal and pull Google's lightweight open-weight Gemma model:
 
 ```bash
@@ -92,11 +94,13 @@ ollama pull gemma:7b
 ```
 
 Ensure the Ollama daemon is active:
+
 ```bash
 ollama serve
 ```
 
 ### 3. Clone and Setup CommitSloth
+
 ```bash
 # Clone the repository
 git clone https://github.com/CommitSloth/CommitSloth.git
@@ -122,42 +126,51 @@ pip install -r requirements.txt
 Run CommitSloth directly from your terminal:
 
 ### Basic: Analyze uncommitted changes in current repository
+
 ```bash
 python commitsloth.py
 ```
 
 ### Analyze only staged git changes (`git diff --cached`)
+
 ```bash
 python commitsloth.py --staged
 ```
 
 ### Compare current feature branch against base branch (`main`)
+
 ```bash
 python commitsloth.py --branch main
 ```
 
 ### Analyze a specific commit
+
 ```bash
 python commitsloth.py --commit HEAD~1
 ```
 
 ### Save PR documentation to a Markdown file
+
 ```bash
 python commitsloth.py -o PULL_REQUEST.md
 ```
 
 ### Stream Gemma's output live in your terminal
+
 ```bash
 python commitsloth.py --stream
 ```
 
 ### Inspect diff statistics without calling Ollama (`--diff-only`)
+
 ```bash
 python commitsloth.py --diff-only
 ```
 
 ### Test mode with synthetic response (`--mock`)
+
 Useful for testing in CI environments or before downloading model weights:
+
 ```bash
 python commitsloth.py --mock -o PR.md
 ```
@@ -186,9 +199,10 @@ python commitsloth.py --mock -o PR.md
 
 ## 🧹 Intelligent Noise & Lockfile Filtering
 
-Large diffs from package managers (e.g. `package-lock.json` with 2,000+ line diffs) easily blow past local LLM context windows and degrade summary quality. 
+Large diffs from package managers (e.g. `package-lock.json` with 2,000+ line diffs) easily blow past local LLM context windows and degrade summary quality.
 
 CommitSloth automatically filters out noise:
+
 - **Lockfiles:** `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`, `poetry.lock`, `Cargo.lock`, `Pipfile.lock`, `composer.lock`, `go.sum`, etc.
 - **Binary Assets:** `*.png`, `*.jpg`, `*.svg`, `*.pdf`, `*.mp4`, `*.zip`, `*.bin`, `*.exe`
 - **Minified Bundles:** `*.min.js`, `*.min.css`, `*.bundle.js`, `*.map`
@@ -209,7 +223,7 @@ pytest tests/ -v
 
 ## 📄 Example Generated Output
 
-```markdown
+````markdown
 # feat(git): implement offline git diff parsing and local gemma integration
 
 ## 📋 Changelog & Key Changes
@@ -233,7 +247,7 @@ pytest tests/ -v
 
 ## 🚀 Release Summary
 CommitSloth provides a 100% offline developer productivity CLI that automates Pull Request and release notes generation using local Google Gemma models.
-```
+````
 
 ---
 
